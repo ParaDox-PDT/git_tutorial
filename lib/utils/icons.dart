@@ -11,6 +11,7 @@ class IconsApp {
 
   // png
   static const avacado = 'assets/images/avacado.png';
+  static const meal = 'assets/images/meal.png';
   static const bread = 'assets/images/bread.png';
   static const grape = 'assets/images/grape.png';
   static const mango = 'assets/images/mango.png';
