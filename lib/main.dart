@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,9 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Column(
-        children: [
-
-        ],
+        children: [Text('Islomjon')],
       ),
     );
   }
