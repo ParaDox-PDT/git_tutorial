@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Column(
         children: [
-
+            Text('Bexruz'),
         ],
       ),
     );
