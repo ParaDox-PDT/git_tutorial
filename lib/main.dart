@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:git_tutorial/screens/screen5/Screen5.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,24 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:const Column(
-        children: [
-          Text('Bexruz'),
-          Text('Islomjon'),
-          Text(
-            "ParaDox",
-            style: TextStyle(
-                fontWeight: FontWeight.w600, fontSize: 40, color: Colors.black),
-          ),
-              Text("from abdullayev"),
-              Text("Farrux Madamimov ")
-        ],
-      ),
+      home:const Screen5()
     );
   }
 }
