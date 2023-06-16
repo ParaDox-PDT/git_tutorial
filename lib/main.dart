@@ -33,7 +33,11 @@ class MyApp extends StatelessWidget {
       ),
       home: Column(
         children: [
-
+          Text(
+            "ParaDox",
+            style: TextStyle(
+                fontWeight: FontWeight.w600, fontSize: 40, color: Colors.black),
+          )
         ],
       ),
     );
