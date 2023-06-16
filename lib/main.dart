@@ -18,6 +18,11 @@ class MyApp extends StatelessWidget {
       ),
       home:const Column(
         children: [
+          Text(
+            "ParaDox",
+            style: TextStyle(
+                fontWeight: FontWeight.w600, fontSize: 40, color: Colors.black),
+          )
               Text("from abdullayev"),
               Text("Farrux Madamimov ")
         ],
