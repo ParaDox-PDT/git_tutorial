@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       home:const Column(
         children: [
+          Text('Bexruz'),
           Text('Islomjon'),
           Text(
             "ParaDox",
