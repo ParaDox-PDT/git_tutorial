@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       home:const Column(
         children: [
-              Text("Farrux Madamimov ")
+              Text("Farrux Madamimov 1999 ")
         ],
       ),
     );
