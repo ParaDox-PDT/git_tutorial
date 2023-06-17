@@ -35,7 +35,7 @@ class _MyContainerState extends State<MyContainer> {
           children: [
             SizedBox(
               height: 120.w,
-              width: 120.w,
+              width: 120,
               child: Image.asset(widget.fruit.url),
             ),
             Column(

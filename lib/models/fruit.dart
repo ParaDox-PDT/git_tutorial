@@ -8,4 +8,8 @@ class Fruit {
     required this.url,
     required this.price,
   });
+  @override
+  String toString() {
+    return "$name-$price";
+  }
 }

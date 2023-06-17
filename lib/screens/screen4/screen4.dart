@@ -2,18 +2,25 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:git_tutorial/repository/fruits.dart';
 import 'package:git_tutorial/screens/screen4/widgets/label.dart';
 import 'package:git_tutorial/screens/screen4/widgets/price_input.dart';
 import 'package:git_tutorial/screens/screen4/widgets/wrap.dart';
 import 'package:git_tutorial/utils/colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../screen5/Screen5.dart';
+
+enum sort { popular, newest, lowest, highest }
+
+var initial = sort.popular;
 final List<String> words = [
   'Popular',
   'Newest',
   'Lowest Price',
   'Highest Price',
 ];
+
 final List<String> shipping = ['Regular', 'Free Shipping'];
 
 void showCustomBottomSheetDialog(BuildContext context) {

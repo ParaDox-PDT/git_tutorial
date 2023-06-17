@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:git_tutorial/screens/screen4/screen4.dart';
 
 import '../../../utils/colors.dart';
 
@@ -27,6 +28,7 @@ class _MyWrapState extends State<MyWrap> {
                     setState(() {
                       _seletedBtn1 = index;
                     });
+                    initial = sort.values[index];
                   },
                   child: Container(
                     padding:

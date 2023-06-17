@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:git_tutorial/repository/fruits.dart';
-import 'package:git_tutorial/repository/repository_screen5.dart';
 import 'package:git_tutorial/screens/screen4/screen4.dart';
 import 'package:git_tutorial/screens/screen5/widgets/appbar_screen5.dart';
 import 'package:git_tutorial/screens/screen5/widgets/my_container.dart';
@@ -12,12 +11,24 @@ import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class Screen5 extends StatefulWidget {
   const Screen5({Key? key}) : super(key: key);
+  static var listData = FruitRepository.data;
 
   @override
   State<Screen5> createState() => _Screen5State();
 }
 
 class _Screen5State extends State<Screen5> {
+  // var listData = FruitRepository.data;
+
+  bool isGrid = false;
+
+  int resultsCount = 0;
+  @override
+  void initState() {
+    super.initState();
+    resultsCount = Screen5.listData.length;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +73,13 @@ class _Screen5State extends State<Screen5> {
                             fontWeight: FontWeight.w600,
                             color: ColorsApp.darkGreen.withOpacity(.4)),
                       ),
+                      onChanged: (fruitName) {
+                        setState(() {
+                          Screen5.listData =
+                              FruitRepository.searchByName(fruitName);
+                          resultsCount = Screen5.listData.length;
+                        });
+                      },
                     ),
                   ),
                 ),
@@ -93,7 +111,7 @@ class _Screen5State extends State<Screen5> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Found 20 Results",
+                  "Found $resultsCount Results",
                   style: TextStyle(
                     fontFamily: "Raleway",
                     fontSize: 22.sp,
@@ -102,7 +120,13 @@ class _Screen5State extends State<Screen5> {
                   ),
                 ),
                 ZoomTapAnimation(
-                    onTap: () {}, child: SvgPicture.asset(IconsApp.list)),
+                    onTap: () {
+                      setState(() {
+                        isGrid = !isGrid;
+                      });
+                    },
+                    child: SvgPicture.asset(
+                        isGrid ? IconsApp.grid : IconsApp.list)),
               ],
             ),
             SizedBox(height: 25.h),
@@ -110,8 +134,8 @@ class _Screen5State extends State<Screen5> {
                 child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
-                ...List.generate(RepositoryScreen5.models.length, (index) {
-                  return MyContainer(fruit: FruitRepository.data[index]);
+                ...List.generate(Screen5.listData.length, (index) {
+                  return MyContainer(fruit: Screen5.listData[index]);
                 })
               ],
             ))
