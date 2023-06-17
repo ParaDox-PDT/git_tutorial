@@ -8,6 +8,8 @@ class IconsApp {
   static const options = 'assets/svg/options.svg';
   static const plus = 'assets/svg/plus.svg';
   static const search = 'assets/svg/search.svg';
+  static const dislike = 'assets/svg/off_like.svg';
+  static const like = 'assets/svg/on_like.svg';
 
   // png
   static const avacado = 'assets/images/avacado.png';

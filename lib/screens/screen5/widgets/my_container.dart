@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:git_tutorial/models/model_screen5.dart';
+import 'package:git_tutorial/utils/colors.dart';
 import 'package:git_tutorial/utils/icons.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-class MyContainer extends StatefulWidget {
-  const MyContainer({Key? key, required this.modelScreen5}) : super(key: key);
+import '../../../models/fruit.dart';
 
-  final ModelScreen5 modelScreen5;
+class MyContainer extends StatefulWidget {
+  const MyContainer({Key? key, required this.fruit}) : super(key: key);
+
+  final Fruit fruit;
 
   @override
   State<MyContainer> createState() => _MyContainerState();
@@ -18,147 +21,112 @@ class _MyContainerState extends State<MyContainer> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15 / 812 * height),
-      child: Stack(children: [
-        Container(
-          height: check? 127/812*height : 124 / 812 * height,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(23),
-            color: const Color(0xFFF1F4F3),
-          ),
-          child: Row(
-            children: [
-              Center(
-                child: Image.asset(widget.modelScreen5.image),
-              ),
-              SizedBox(
-                height: 10 / 812 * height,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.modelScreen5.name,
-                    style: const TextStyle(
-                        fontFamily: "Raleway",
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF194B38)),
-                  ),
-                  SizedBox(
-                    height: 10 / 812 * height,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: widget.modelScreen5.price,
-                      style: const TextStyle(
-                          fontFamily: "Montserrat",
-                          fontSize: 26,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF4CBB5E)),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: widget.modelScreen5.priceResidual,
-                            style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF4CBB5E))),
-                        const TextSpan(
-                            text: "/kg",
-                            style: TextStyle(
-                                fontFamily: "Raleway",
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF9C9C9C))),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
+      padding: EdgeInsets.symmetric(vertical: 15.h),
+      child: Container(
+        height: 120.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(23),
+          color: ColorsApp.c_F1F4F3,
         ),
-        Align(
-          alignment: Alignment.bottomRight,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 22 / 812 * height,
-              ),
-              ZoomTapAnimation(
-                onTap: () {
-                  setState(() {
-                    check = !check;
-                  });
-                },
-                child:check? Container(
-                  width: 27/375*width,
-                  height: 27/375*width,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFFF1F4F3),
+        child: Row(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 120.w,
+              width: 120.w,
+              child: Image.asset(widget.fruit.url),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  widget.fruit.name,
+                  style: TextStyle(
+                      fontFamily: "Raleway",
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF194B38)),
+                ),
+                SizedBox(height: 10.h),
+                RichText(
+                  text: TextSpan(
+                    text: "\$ ${widget.fruit.price}",
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.lightGreen),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: "/kg",
+                          style: TextStyle(
+                              fontFamily: "Raleway",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              color: ColorsApp.mediumLightGrey)),
+                    ],
                   ),
+                )
+              ],
+            ),
+            Spacer(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Spacer(),
+                ZoomTapAnimation(
+                    onTap: () {
+                      setState(() {
+                        check = !check;
+                      });
+                    },
+                    child: Container(
+                      width: 27.h,
+                      height: 27.h,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: check ? ColorsApp.lightRed : ColorsApp.white,
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          check ? IconsApp.like : IconsApp.dislike,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    )),
+                Spacer(),
+                ZoomTapAnimation(
+                  onTap: () {},
                   child: Container(
-                    width: 24 / 375 * width,
-                    height: 24 / 375 * width,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.red,
-                      border: Border.all(color: const Color(0xFFEC534A).withOpacity(.3))
+                    // alignment: Alignment.bottomCenter,
+                    width: 53.h,
+                    height: 41.h,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(23)),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          ColorsApp.c_26AD71,
+                          ColorsApp.c_32CB4B,
+                        ],
+                      ),
                     ),
                     child: Center(
-                      child: SvgPicture.asset("assets/svg/on_like.svg"),
+                      child: SvgPicture.asset(IconsApp.plus),
                     ),
                   ),
-                ) :
-                Container(
-                  width: 24 / 375 * width,
-                  height: 24 / 375 * width,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: check ? Colors.red : Colors.white,
-                  ),
-                  child: Center(
-                    child: SvgPicture.asset("assets/svg/off_like.svg"),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 36 / 812 * height,
-              ),
-              ZoomTapAnimation(
-                onTap: () {},
-                child: Container(
-                  width: 53 / 375 * width,
-                  height: 41 / 812 * height,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(23)),
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xFF26AD71),
-                        Color(0xFF32CB4B),
-                      ],
-                    ),
-                  ),
-                  child: Center(
-                    child: SvgPicture.asset(IconsApp.plus),
-                  ),
-                ),
-              )
-            ],
-          ),
-        )
-      ]),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }

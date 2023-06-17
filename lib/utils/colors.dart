@@ -22,4 +22,5 @@ class ColorsApp {
   static const Color c_777777 = Color(0xFF777777);
   static const Color c_26AD71 = Color(0xFF26AD71);
   static const Color c_32CB4B = Color(0xFF32CB4B);
+  static const Color c_F1F4F3 = Color(0xFFF1F4F3);
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:git_tutorial/repository/fruits.dart';
 import 'package:git_tutorial/repository/repository_screen5.dart';
+import 'package:git_tutorial/screens/screen4/screen4.dart';
 import 'package:git_tutorial/screens/screen5/widgets/appbar_screen5.dart';
 import 'package:git_tutorial/screens/screen5/widgets/my_container.dart';
+import 'package:git_tutorial/utils/colors.dart';
 import 'package:git_tutorial/utils/icons.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -16,66 +20,98 @@ class Screen5 extends StatefulWidget {
 class _Screen5State extends State<Screen5> {
   @override
   Widget build(BuildContext context) {
-
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorsApp.white,
       appBar: const AppBarScreen5(),
       body: Padding(
-        padding:  EdgeInsets.only(left: 35/375*width,right: 35/375*width,top: 20/812*height,bottom: 1),
+        padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20.h),
         child: Column(
           children: [
             Row(
               children: [
-                ZoomTapAnimation(
-                  onTap: (){},
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16/375*width,vertical: 15/812*height),
-                    width: 236/375*width,
-                    height: 50/812*height,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: const Color(0xFF194B38).withOpacity(.06)
-                    ),
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(IconsApp.search),
-                        SizedBox(width: 11/375*width,),
-                        const Text("Sweet Fruit",style: TextStyle(fontFamily: "Raleway",fontSize: 14,fontWeight: FontWeight.w600,color: Color(0xFF194B38)),)
-                      ],
+                Expanded(
+                  child: SizedBox(
+                    height: 50.h,
+                    child: TextField(
+                      autofocus: false,
+                      style: TextStyle(
+                        fontFamily: "Raleway",
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12.sp,
+                        color: ColorsApp.darkGreen,
+                      ),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: ColorsApp.darkGreen.withOpacity(.06),
+                        prefixIcon: Container(
+                          padding: EdgeInsets.all(12),
+                          child: SvgPicture.asset(IconsApp.search),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(style: BorderStyle.none),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(style: BorderStyle.none),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        hintText: "Search fresh groceries",
+                        hintStyle: TextStyle(
+                            fontFamily: "Raleway",
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600,
+                            color: ColorsApp.darkGreen.withOpacity(.4)),
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(width: 18/375*width,),
+                SizedBox(
+                  width: 18,
+                ),
                 ZoomTapAnimation(
-                  onTap: (){},
+                  onTap: () {
+                    showCustomBottomSheetDialog(context);
+                  },
                   child: Container(
-                    width: 50/812*height,
-                    height: 50/812*height,
+                    width: 50.h,
+                    height: 50.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
-                      color: const Color(0xFFF1F4F3),
+                      color: ColorsApp.c_F1F4F3,
                     ),
-                    child: Center(child: SvgPicture.asset(IconsApp.options),),
+                    child: Center(
+                      child: SvgPicture.asset(IconsApp.options),
+                    ),
                   ),
                 )
               ],
             ),
-            SizedBox(height: 25/812*height,),
+            SizedBox(
+              height: 25.h,
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Found 20 Results",style: TextStyle(fontFamily: "Raleway",fontSize: 22,fontWeight: FontWeight.w700,color: Color(0xFF194B38)),),
-                const Spacer(),
-                ZoomTapAnimation(onTap: (){},child: SvgPicture.asset(IconsApp.list)),
-                SizedBox(width: 5/375*width,),
+                Text(
+                  "Found 20 Results",
+                  style: TextStyle(
+                    fontFamily: "Raleway",
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w700,
+                    color: ColorsApp.darkGreen,
+                  ),
+                ),
+                ZoomTapAnimation(
+                    onTap: () {}, child: SvgPicture.asset(IconsApp.list)),
               ],
             ),
-            Expanded(child: ListView(
+            SizedBox(height: 25.h),
+            Expanded(
+                child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
-                ...List.generate(RepositoryScreen5.models.length, (index){
-                  return MyContainer(modelScreen5: RepositoryScreen5.models[index]);
+                ...List.generate(RepositoryScreen5.models.length, (index) {
+                  return MyContainer(fruit: FruitRepository.data[index]);
                 })
               ],
             ))
