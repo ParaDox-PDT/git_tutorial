@@ -17,6 +17,9 @@ class MyContainer extends StatefulWidget {
 }
 
 class _MyContainerState extends State<MyContainer> {
+
+
+
   bool check = false;
 
   @override
@@ -48,18 +51,25 @@ class _MyContainerState extends State<MyContainer> {
                       fontFamily: "Raleway",
                       fontSize: 15.sp,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF194B38)),
+                      color: const Color(0xFF194B38)),
                 ),
                 SizedBox(height: 10.h),
                 RichText(
                   text: TextSpan(
-                    text: "\$ ${widget.fruit.price}",
+                    text: "\$ ${widget.fruit.price.toString().split(".")[0]}.",
                     style: TextStyle(
                         fontFamily: "Montserrat",
                         fontSize: 24.sp,
                         fontWeight: FontWeight.w600,
                         color: Colors.lightGreen),
                     children: <TextSpan>[
+                      TextSpan(
+                          text: widget.fruit.price.toString().split(".")[1],
+                          style: TextStyle(
+                              fontFamily: "Montserrat",
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w600,
+                              color: ColorsApp.lightGreen)),
                       TextSpan(
                           text: "/kg",
                           style: TextStyle(
@@ -72,11 +82,11 @@ class _MyContainerState extends State<MyContainer> {
                 )
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Spacer(),
+                const Spacer(),
                 ZoomTapAnimation(
                     onTap: () {
                       setState(() {
@@ -97,7 +107,7 @@ class _MyContainerState extends State<MyContainer> {
                         ),
                       ),
                     )),
-                Spacer(),
+                const Spacer(),
                 ZoomTapAnimation(
                   onTap: () {},
                   child: Container(

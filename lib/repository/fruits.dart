@@ -1,4 +1,4 @@
-import 'package:flutter/services.dart';
+
 import 'package:git_tutorial/utils/icons.dart';
 
 import '../models/fruit.dart';
@@ -18,7 +18,7 @@ class FruitRepository {
         .where((element) =>
             element.name.toLowerCase().contains(name.toLowerCase()))
         .toList();
-    return sortByPrice();
+    return result;
   }
 
   static sortByPrice() {
