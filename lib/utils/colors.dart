@@ -4,7 +4,7 @@ class ColorsApp {
   // app named colors
   static const Color darkGreen = Color(0xFF194b38);
   static const Color mediumGreen = Color(0xFF2aaf7f);
-  static const Color lightGreen = Color(0xFF4cbb5e);
+  static const Color lightGreen = Color(0xFF4CBB5E);
   static const Color lightRed = Color(0xFFec534a);
   static const Color lightYellow = Color(0xFFf0c334);
   static const Color darkGrey = Color(0xFF4b4b4b);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:git_tutorial/screens/screen4/screen4.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../../utils/colors.dart';
 
@@ -23,28 +24,16 @@ class _MyWrapState extends State<MyWrap> {
       children: [
         ...List.generate(
             widget.words.length,
-            (index) => GestureDetector(
+            (index) => ZoomTapAnimation(
                   onTap: () {
                     setState(() {
                       _seletedBtn1 = index;
                     });
-                    initial = sort.values[index];
+                    initial = Sort.values[index];
                   },
                   child: Container(
                     padding:
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-                    child: Text(
-                      widget.words[index],
-                      textScaleFactor: 1.2,
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w500,
-                        color: _seletedBtn1 == index
-                            ? ColorsApp.mediumGreen
-                            : ColorsApp.c_777777,
-                      ),
-                    ),
                     decoration: BoxDecoration(
                       color: _seletedBtn1 == index
                           ? ColorsApp.c_EBF4F1
@@ -57,8 +46,20 @@ class _MyWrapState extends State<MyWrap> {
                             : ColorsApp.lightGrey,
                       ),
                     ),
+                    child: Text(
+                      widget.words[index],
+                      textScaleFactor: 1.2,
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500,
+                        color: _seletedBtn1 == index
+                            ? ColorsApp.mediumGreen
+                            : ColorsApp.c_777777,
+                      ),
+                    ),
                   ),
-                ))
+                ),)
       ],
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:git_tutorial/screens/screen2/screen2.dart';
-import 'package:git_tutorial/screens/screen5/Screen5.dart';
+import 'package:git_tutorial/ui/home_screen/home_screen.dart';
+
+
 
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) => const MaterialApp(
           debugShowCheckedModeBanner: false,
-              home: Screen2(),
+              home: HomeScreen(),
             ));
 
   }
