@@ -11,7 +11,6 @@ import '../screen5/Screen5.dart';
 import '../screen5/widgets/appbar_screen5.dart';
 import '../screen5/widgets/my_container.dart';
 
-
 class Screen2 extends StatefulWidget {
   const Screen2({super.key});
 
@@ -22,10 +21,8 @@ class Screen2 extends StatefulWidget {
 class _Screen2State extends State<Screen2> {
 
   bool isGrid = false;
-  bool isOdd = true;
   @override
   void initState() {
-    isOdd;
     isGrid;
     super.initState();
 
@@ -152,9 +149,8 @@ class _Screen2State extends State<Screen2> {
             ),
             Expanded(child: isGrid?GridView(
               physics: const BouncingScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 20,childAspectRatio:isOdd?0.5:0.7),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 20,childAspectRatio:0.5),
               children:  [...List.generate(Screen5.listData.length, (index) {
-                setState(() {index%2==0?isOdd = true:isOdd = false;});
                 return MyContainer2(fruit: Screen5.listData[index]);
               })
               ],
