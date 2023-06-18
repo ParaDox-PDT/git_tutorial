@@ -2,18 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:git_tutorial/repository/fruits.dart';
 import 'package:git_tutorial/screens/screen4/widgets/label.dart';
 import 'package:git_tutorial/screens/screen4/widgets/price_input.dart';
 import 'package:git_tutorial/screens/screen4/widgets/wrap.dart';
 import 'package:git_tutorial/utils/colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../screen5/Screen5.dart';
 
-enum sort { popular, newest, lowest, highest }
+enum Sort { popular, newest, lowest, highest }
 
-var initial = sort.popular;
+var initial = Sort.popular;
 final List<String> words = [
   'Popular',
   'Newest',
@@ -26,7 +24,7 @@ final List<String> shipping = ['Regular', 'Free Shipping'];
 void showCustomBottomSheetDialog(BuildContext context) {
   showModalBottomSheet(
       isScrollControlled: true,
-      backgroundColor: ColorsApp.white,
+      backgroundColor: Colors.transparent,
       showDragHandle: true,
       barrierColor: ColorsApp.darkGreen.withOpacity(.5),
       context: context,
@@ -38,8 +36,14 @@ void showCustomBottomSheetDialog(BuildContext context) {
                   bottom: MediaQuery.of(context).viewInsets.bottom),
               child: Container(
                 height: 400.h,
-                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                color: ColorsApp.white,
+                padding: EdgeInsets.only(left: 30.w,right: 30.w,top: 18.h),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.elliptical(375,50),
+                    topRight: Radius.elliptical(375,50),
+                  ),
+                  color: Colors.white,
+                ),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +76,7 @@ void showCustomBottomSheetDialog(BuildContext context) {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 colors: [
                                   ColorsApp.c_26AD71,
                                   ColorsApp.c_32CB4B

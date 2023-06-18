@@ -8,7 +8,7 @@ class PriceInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: 109, minWidth: 40),
+      constraints: const BoxConstraints(maxWidth: 109, minWidth: 40),
       // width: 109,
       child: TextField(
         decoration: InputDecoration(
