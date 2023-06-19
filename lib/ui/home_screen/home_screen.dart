@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:git_tutorial/screens/screen2/screen2.dart';
 import 'package:git_tutorial/screens/screen3/screen3.dart';
 import 'package:git_tutorial/screens/screen5/Screen5.dart';
 import 'package:git_tutorial/ui/home_screen/widgets/button.dart';
@@ -31,7 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ScreenButton(
                       title: "Screen2",
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) {
+                              return const Screen2();
+                            }));
+                      },
                     ),
                     ScreenButton(
                       title: "Screen3",
@@ -50,8 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ScreenButton(title: "Screen4",onTap: () {}),
-                    ScreenButton(title: "Screen5",onTap: () {
+                    ScreenButton(title: "Screen4",onTap: () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) {
                             return const Screen5();

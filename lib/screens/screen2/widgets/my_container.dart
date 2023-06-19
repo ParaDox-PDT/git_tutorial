@@ -61,7 +61,7 @@ class _MyContainer2State extends State<MyContainer2> {
                 width: 150,
                 child: Image.asset(widget.fruit.url),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
