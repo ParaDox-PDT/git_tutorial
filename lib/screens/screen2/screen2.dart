@@ -35,6 +35,7 @@ class _Screen2State extends State<Screen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const AppBarScreen5(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20.h),
