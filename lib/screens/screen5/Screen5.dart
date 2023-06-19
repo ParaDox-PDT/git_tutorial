@@ -9,6 +9,9 @@ import 'package:git_tutorial/utils/colors.dart';
 import 'package:git_tutorial/utils/icons.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
+import '../screen3/screen3.dart';
+import '../screen3/widgets/my_grid_items.dart';
+
 class Screen5 extends StatefulWidget {
   const Screen5({Key? key}) : super(key: key);
   static var listData = FruitRepository.data;
@@ -130,14 +133,25 @@ class _Screen5State extends State<Screen5> {
             ),
             SizedBox(height: 25.h),
             Expanded(
-                child: ListView(
-              physics: const BouncingScrollPhysics(),
-              children: [
-                ...List.generate(Screen5.listData.length, (index) {
-                  return MyContainer(fruit: Screen5.listData[index]);
-                })
-              ],
-            ))
+                child: isGrid
+                    ? ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    ...List.generate(Screen3.listData.length, (index) {
+                      return MyContainer(fruit: Screen3.listData[index]);
+                    })
+                  ],
+                )
+                    : GridView.builder(
+                    itemCount: Screen3.listData.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 149/245,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10),
+                    itemBuilder: (context, index) {
+                      return MyGridItems(fruit: Screen3.listData[index]);
+                    }))
           ],
         ),
       ),

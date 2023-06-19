@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:git_tutorial/ui/home_screen/home_screen.dart';
 import 'package:git_tutorial/utils/colors.dart';
 import 'package:git_tutorial/utils/icons.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -18,7 +19,7 @@ class _Screen1State extends State<Screen1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark
         ),
@@ -26,11 +27,15 @@ class _Screen1State extends State<Screen1> {
         elevation: 0,
         actions: [
           ZoomTapAnimation(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                return const HomeScreen();
+              }));
+            },
             child: Container(
               width: 75.w,
               height: 40.h,
-              padding: EdgeInsets.symmetric(horizontal: 21, vertical: 11),
+              padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 11),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(45),
                 border: Border.all(
@@ -58,7 +63,7 @@ class _Screen1State extends State<Screen1> {
                     filled: true,
                     fillColor: ColorsApp.darkGreen.withOpacity(.06),
                     hintText: "Search fresh groceries",
-                    suffixIcon: Container(padding:EdgeInsets.all(12),child: SvgPicture.asset(IconsApp.search)),
+                    suffixIcon: Container(padding:const EdgeInsets.all(12),child: SvgPicture.asset(IconsApp.search)),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(style: BorderStyle.none),
                       borderRadius: BorderRadius.circular(18),
@@ -138,7 +143,7 @@ class _Screen1State extends State<Screen1> {
                   style: TextStyle(color: ColorsApp.darkGreen,fontSize: 20.w,fontWeight: FontWeight.w600),
                 ),
                 SizedBox(width: 216.w,),
-                TextButton(onPressed: (){}, child: Text("remove",style: TextStyle(color: ColorsApp.lightRed),))
+                TextButton(onPressed: (){}, child: const Text("remove",style: TextStyle(color: ColorsApp.lightRed),))
               ],
             ),
             Row(

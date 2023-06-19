@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:git_tutorial/ui/home_screen/home_screen.dart';
 import 'package:git_tutorial/utils/colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -22,7 +23,12 @@ class AppBarScreen5 extends StatelessWidget implements PreferredSize {
         padding: EdgeInsets.only(left: 30),
         child: Center(
           child: ZoomTapAnimation(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) {
+                return HomeScreen();
+              }));
+            },
             child: Container(
               width: 60,
               height: 40.h,

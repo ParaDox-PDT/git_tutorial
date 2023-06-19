@@ -25,7 +25,7 @@ class _MyGridItemsState extends State<MyGridItems> {
       width: 149.w,
       height: 245.h,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(23),
+        borderRadius: BorderRadius.circular(23.r),
         color: ColorsApp.c_F1F4F3,
       ),
       child: Column(
@@ -49,8 +49,8 @@ class _MyGridItemsState extends State<MyGridItems> {
                         });
                       },
                       child: Container(
-                        width: 27.h,
-                        height: 27.h,
+                        width: 25.h,
+                        height: 25.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: check ? ColorsApp.lightRed : ColorsApp.white,
@@ -122,7 +122,7 @@ class _MyGridItemsState extends State<MyGridItems> {
                         child: Container(
                           // alignment: Alignment.bottomCenter,
                           width: 53.h,
-                          height: 41.h,
+                          height: 39.h,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(15),

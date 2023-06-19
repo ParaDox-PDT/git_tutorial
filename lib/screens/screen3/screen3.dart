@@ -145,7 +145,7 @@ class _Screen3State extends State<Screen3> {
                   itemCount: Screen3.listData.length,
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 0.604,
+                            childAspectRatio: 149/245,
                             crossAxisSpacing: 10,
                             mainAxisSpacing: 10),
                         itemBuilder: (context, index) {
