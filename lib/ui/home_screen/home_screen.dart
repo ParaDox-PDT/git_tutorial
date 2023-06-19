@@ -4,6 +4,8 @@ import 'package:git_tutorial/screens/screen3/screen3.dart';
 import 'package:git_tutorial/screens/screen5/Screen5.dart';
 import 'package:git_tutorial/ui/home_screen/widgets/button.dart';
 
+import '../../screens/screen1/screen1.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -27,7 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     ScreenButton(
                       title: "Screen1",
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) {
+                              return Screen1();
+                            }));
+                      },
                     ),
                     ScreenButton(
                       title: "Screen2",
